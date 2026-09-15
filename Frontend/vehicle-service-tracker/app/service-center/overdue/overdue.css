@@ -1,0 +1,333 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+.overdue-page {
+  min-height: 100vh;
+  padding: 38px 20px 60px;
+  background: radial-gradient(circle at 0 0, #60a5fa2e, #0000 32%), radial-gradient(circle at 100% 10%, #a78bfa29, #0000 30%), linear-gradient(135deg, #eef6ff 0%
+0%
+, #f5f3ff 48%, #eefaf8 100%);
+  color: #172033;
+}
+
+.overdue-container {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.overdue-back {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 28px;
+  color: #475467;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.overdue-back:hover {
+  color: #2563eb;
+}
+
+.overdue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 25px;
+  margin-bottom: 28px;
+}
+
+.overdue-header > div:first-child > span {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.overdue-header h1 {
+  margin: 7px 0;
+  font-size: 34px;
+  letter-spacing: -0.7px;
+}
+
+.overdue-header p {
+  margin: 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+.overdue-count {
+  min-width: 90px;
+  height: 85px;
+  padding: 12px;
+  background: #fff1f0;
+  border: 1px solid #ffd6d2;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overdue-count strong {
+  font-size: 29px;
+  line-height: 1;
+  color: #b42318;
+}
+
+.overdue-count span {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #b42318;
+  text-transform: uppercase;
+}
+
+/* ERROR */
+
+.overdue-error {
+  margin-bottom: 20px;
+  padding: 14px 17px;
+  border-radius: 11px;
+  border: 1px solid #fecdca;
+  background: #fef3f2;
+  color: #b42318;
+  font-size: 14px;
+}
+
+/* LIST */
+
+.overdue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* CARD */
+
+.overdue-card {
+  background: white;
+  border: 1px solid #e8e1e1;
+  border-left: 4px solid #d92d20;
+  border-radius: 18px;
+  padding: 23px;
+  box-shadow:
+    0 8px 27px rgba(16, 24, 40, 0.05);
+}
+
+.vehicle-main {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.vehicle-icon {
+  width: 53px;
+  height: 53px;
+  border-radius: 14px;
+  background: #fef3f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.vehicle-registration {
+  display: inline-block;
+  padding: 5px 8px;
+  background: #f2f4f7;
+  color: #475467;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+
+.vehicle-main h2 {
+  margin: 5px 0 0;
+  font-size: 20px;
+}
+
+/* STATUS */
+
+.overdue-status {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.status-badge {
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.status-badge.date {
+  background: #fff1f0;
+  color: #b42318;
+}
+
+.status-badge.mileage {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+/* STATS */
+
+.vehicle-stats {
+  margin-top: 20px;
+  padding: 18px 0;
+  border-top: 1px solid #eef1f5;
+  border-bottom: 1px solid #eef1f5;
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+  gap: 18px;
+}
+
+.vehicle-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vehicle-stats span {
+  color: #98a2b3;
+  font-size: 10px;
+}
+
+.vehicle-stats strong {
+  color: #344054;
+  font-size: 14px;
+}
+
+.vehicle-stats .due-date {
+  color: #b42318;
+}
+
+/* FOOTER */
+
+.overdue-footer {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.overdue-footer button {
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  padding: 11px 17px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.overdue-footer button:hover {
+  background: #1d4ed8;
+}
+
+/* EMPTY */
+
+.overdue-empty {
+  background: white;
+  border: 1px dashed #b7dec6;
+  border-radius: 20px;
+  padding: 70px 25px;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 55px;
+  height: 55px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: #ecfdf3;
+  color: #039855;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.overdue-empty h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.overdue-empty p {
+  margin: 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+/* LOADING */
+
+.overdue-loading {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #667085;
+}
+
+.overdue-spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid #e4e7ec;
+  border-top-color: #d92d20;
+  border-radius: 50%;
+  animation: overdueSpin 0.8s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes overdueSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+  .overdue-header {
+    align-items: flex-start;
+  }
+
+  .vehicle-stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .overdue-page {
+    padding: 25px 15px 45px;
+  }
+
+  .overdue-header {
+    flex-direction: column;
+  }
+
+  .overdue-count {
+    width: 100%;
+  }
+
+  .vehicle-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .overdue-footer button {
+    width: 100%;
+  }
+}

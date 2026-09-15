@@ -1,0 +1,239 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+.vehicle-page {
+  min-height: 100vh;
+  background:
+        radial-gradient(circle at 0 0, #60a5fa2e, #0000 32%), radial-gradient(circle at 100% 10%, #a78bfa29, #0000 30%), linear-gradient(135deg, #eef6ff 0%
+0%
+, #f5f3ff 48%, #eefaf8 100%);
+  padding: 40px 20px 60px;
+  color: #172033;
+}
+
+.vehicle-container {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  color: #475467;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.back-button:hover {
+  color: #2563eb;
+}
+
+.vehicle-header {
+  margin-bottom: 30px;
+}
+
+.vehicle-header span {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.vehicle-header h1 {
+  margin: 8px 0;
+  font-size: 34px;
+  letter-spacing: -0.6px;
+}
+
+.vehicle-header p {
+  margin: 0;
+  color: #667085;
+  font-size: 15px;
+}
+
+.vehicle-form {
+  background: white;
+  border: 1px solid #e7ebf1;
+  border-radius: 22px;
+  box-shadow:
+    0 10px 35px rgba(16, 24, 40, 0.06);
+  overflow: hidden;
+}
+
+.form-section {
+  padding: 32px;
+}
+
+.form-section h2 {
+  margin: 0 0 5px;
+  font-size: 21px;
+}
+
+.section-description {
+  margin: 0 0 28px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #344054;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #d0d5dd;
+  border-radius: 11px;
+  padding: 0 14px;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.form-group small {
+  margin-top: 7px;
+  color: #98a2b3;
+  font-size: 11px;
+}
+
+.mileage-input {
+  position: relative;
+}
+
+.mileage-input input {
+  padding-right: 50px;
+}
+
+.mileage-input span {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #667085;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-footer {
+  border-top: 1px solid #eef1f5;
+  background: #fafbfc;
+  padding: 20px 32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancel-button,
+.save-button {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel-button {
+  border: 1px solid #d0d5dd;
+  background: white;
+  color: #344054;
+}
+
+.cancel-button:hover {
+  background: #f9fafb;
+}
+
+.save-button {
+  border: none;
+  background: #2563eb;
+  color: white;
+  box-shadow:
+    0 7px 15px rgba(37, 99, 235, 0.2);
+}
+
+.save-button:hover {
+  background: #1d4ed8;
+}
+
+.cancel-button:disabled,
+.save-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.alert {
+  padding: 13px 16px;
+  border-radius: 11px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.alert.error {
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  color: #b42318;
+}
+
+.alert.success {
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+  color: #067647;
+}
+
+@media (max-width: 700px) {
+  .vehicle-page {
+    padding: 25px 15px 40px;
+  }
+
+  .vehicle-header h1 {
+    font-size: 28px;
+  }
+
+  .form-section {
+    padding: 24px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .form-footer {
+    padding: 18px 20px;
+    flex-direction: column-reverse;
+  }
+
+  .cancel-button,
+  .save-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,286 @@
+
+-------------backened Explaination------------------
+
+The architecture is:
+
+              Client / Frontend
+                     ↓
+            ASP.NET Core Controller
+                     ↓
+                Service Layer
+                     ↓
+                Repository Layer
+                     ↓
+                   Npgsql
+                     ↓
+                 PostgreSQL
+
+
+Models : Models represent the database entities.
+
+DTO(Data Transfer Object) : DTOs define what data is allowed to enter or leave the API.
+
+Database Layer : Database Name - VehicleServiceTracker 
+
+                   Relationship : Owner
+                                    │
+                                    └────< Vehicles
+                                              │
+                                              └────< ServiceRecords >──── ServiceCenter
+
+                  Meaning:
+
+                            One Owner
+                               ↓
+                       can own many Vehicles
+
+                           One Vehicle
+                                ↓
+                    can have many ServiceRecords
+
+                         One ServiceCenter
+                                ↓
+                      can create many ServiceRecords
+
+
+Npgsql : Npgsql is the .NET data provider for PostgreSQL.
+        
+         We use:
+
+              NpgsqlConnection
+              NpgsqlCommand
+              NpgsqlDataReader
+
+            to communicate with PostgreSQL.
+
+DbConnectionFactory : File - Database/DbConnectionFactory.cs
+
+                       Its Job is simple : Read connection string
+                                                   ↓
+                                        Create PostgreSQL connection
+
+Repository Layer : Repositories are responsible for database operations
+
+Service layer : Service layer contain buisness logic.
+
+Authentication Flow : We have two types of users - 1) owner
+                                                   2) Servicecenter
+
+                      When a user logs in:
+
+                               Email + Password
+                                     ↓
+                           Find user in PostgreSQL
+                                     ↓
+                       Compare password with BCrypt hash
+                                     ↓ 
+                                 If valid
+                                     ↓
+                               Generate JWT
+
+Exception middleware : Middleware/ExceptionMiddleware.cs : Its job is to catch exceptions globally instead of using try catch block everywhere
+
+
+
+-----------------Backened Dagram ------------------------------
+
+               CLIENT / FRONTEND
+                           │
+                           ▼
+                  ASP.NET CORE API
+                           │
+            ┌──────────────┴──────────────┐
+            │                             │
+            ▼                             ▼
+     JWT Authentication            Swagger / Requests
+            │
+            ▼
+     Role Authorization
+       │           │
+       │           │
+    Owner      ServiceCenter
+       │           │
+       ▼           ▼
+  Controllers / API Endpoints
+            │
+            ▼
+       Service Layer
+            │
+            ├── Validation
+            ├── Business Rules
+            ├── JWT Identity usage
+            └── DTO Mapping
+            │
+            ▼
+      Repository Layer
+            │
+            ▼
+          Npgsql
+            │
+            ▼
+       PostgreSQL
+            │
+            ├── Owners
+            ├── Vehicles
+            ├── ServiceCenters
+            └── ServiceRecords
+
+
+-------------------Project  ------------------------------
+
+"This project is a Vehicle Service and Maintenance Tracker built using ASP.NET Core Web API and PostgreSQL. 
+I used a layered architecture with Controllers, Services, and Repositories. 
+The repository layer uses Npgsql and parameterized raw SQL instead of an ORM.
+
+For authentication, users register and log in with BCrypt-hashed passwords. 
+After successful login, the API generates a JWT containing the user ID and role. 
+ASP.NET Core authentication validates the token, and role-based authorization uses Owner and ServiceCenter roles to protect endpoints.
+
+For vehicle ownership, I never trust owner_id from the client. 
+I extract the authenticated user ID from the JWT and use it in the database query. 
+Vehicle access also checks both vehicle_id and owner_id, which prevents one Owner from accessing another Owner's vehicle.
+
+Service Centers can create service records. 
+The backend calculates next_service_due instead of accepting that value from the client. 
+I also implemented an optimized overdue-vehicle query using a SQL window function to get the latest service record per vehicle and check both date and mileage conditions.
+
+Finally, I added global exception middleware so errors are handled consistently across the API."
+
+
+
+-------------------Frontened Explaination --------------------------
+--Explaination --
+
+For the frontend, I used Next.js with React and TypeScript. 
+I used the App Router for route organization. 
+I kept the frontend focused on presentation, user interaction, API communication, and routing. 
+I created reusable components such as Navbar and AuthGuard, and a centralized API helper for backend communication. 
+I used an HttpOnly cookie for JWT authentication rather than storing tokens in localStorage. 
+Owner and Service Center routes are separated and protected using role-aware AuthGuard logic, 
+while actual authorization is enforced by the ASP.NET Core backend.
+
+
+--Structure ----
+
+app/
+|
+|-- page.tsx
+|      Home page
+|
+|-- login/
+|      page.tsx
+|
+|-- register/
+|      page.tsx
+|
+|-- owner/
+|      |-- layout.tsx
+|      |-- dashboard/
+|      |-- vehicles/
+|             |-- new/
+|             |-- [id]/
+|
+|-- service-center/
+|      |-- layout.tsx
+|      |-- dashboard/
+|      |-- search/
+|      |-- overdue/
+|      |-- service/
+|
+|-- components/
+       |-- Navbar.tsx
+       |-- AuthGuard.tsx
+
+lib/
+|
+|-- api.ts
+|-- auth.ts
+
+--FRONTEND CONNECTS TO BACKEND--
+
+Next.js
+   |
+   | fetch()
+   v
+lib/api.ts
+   |
+   | NEXT_PUBLIC_API_URL
+   v
+ASP.NET Core Web API
+   |
+   v
+Service Layer
+   |
+   v
+Repository
+   |
+   v
+PostgreSQL
+
+
+LOCAL:
+Frontend:
+http://localhost:3000
+
+Backend:
+https://localhost:7129
+
+----JWT AUTHENTICATION---
+
+JWT contains:
+- User ID
+- Role
+
+Example:
+role = Owner
+
+JWT is stored in:
+HttpOnly Cookie
+
+Cookie name:
+access_token
+
+Frontend does NOT:
+- localStorage token
+- sessionStorage token
+- read JWT directly
+
+
+---IMPORTANT INTERVIEW LINE--
+
+"I use an HttpOnly cookie for JWT storage instead
+of localStorage. The browser automatically sends
+the cookie with authenticated API requests."
+
+
+-- "How did you connect frontend and backend?"--
+
+"I used REST APIs to connect my Next.js frontend
+with the ASP.NET Core Web API.
+
+I created a centralized apiRequest helper in
+lib/api.ts. The backend base URL comes from
+NEXT_PUBLIC_API_URL.
+
+The frontend sends HTTP requests using fetch.
+For authentication, I use an HttpOnly JWT cookie,
+so credentials: include is used to send the cookie
+with requests.
+
+ASP.NET Core validates the JWT and role claims,
+then the service and repository layers access
+PostgreSQL.
+
+The API returns JSON, and React uses that data
+to update the UI."
+
+---Why do you have AuthGuard if the backend already has authorization?-----
+"AuthGuard protects the frontend routes and
+provides a better user experience.
+
+But I don't rely on AuthGuard for security.
+The ASP.NET Core backend independently validates
+the JWT and role using authorization attributes.
+
+The backend is the actual security boundary."
+

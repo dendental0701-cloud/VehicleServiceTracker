@@ -1,0 +1,361 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+.service-page {
+  min-height: 100vh;
+  padding: 38px 20px 60px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(37, 99, 235, 0.08),
+      transparent 30%
+    ),
+    #f4f7fb;
+  color: #172033;
+}
+
+.service-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.service-back {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 28px;
+  color: #475467;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.service-back:hover {
+  color: #2563eb;
+}
+
+.service-heading {
+  margin-bottom: 28px;
+}
+
+.service-heading > span {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.service-heading h1 {
+  margin: 7px 0;
+  font-size: 34px;
+  letter-spacing: -0.7px;
+}
+
+.service-heading p {
+  margin: 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+/* VEHICLE */
+
+.vehicle-banner {
+  background: white;
+  border: 1px solid #e5e9ef;
+  border-radius: 20px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  box-shadow:
+    0 8px 25px rgba(16, 24, 40, 0.05);
+  margin-bottom: 20px;
+}
+
+.vehicle-banner-icon {
+  width: 60px;
+  height: 60px;
+  background: #eff6ff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.vehicle-banner span,
+.current-mileage span {
+  display: block;
+  color: #98a2b3;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.vehicle-banner h2 {
+  margin: 4px 0;
+  font-size: 21px;
+}
+
+.vehicle-banner strong {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 7px;
+  background: #f2f4f7;
+  color: #475467;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+}
+
+.current-mileage {
+  min-width: 150px;
+  padding: 13px 16px;
+  border-radius: 13px;
+  background: #f8fafc;
+  text-align: right;
+}
+
+.current-mileage strong {
+  margin-top: 4px;
+  padding: 0;
+  background: none;
+  font-size: 22px;
+  color: #172033;
+}
+
+.current-mileage small {
+  margin-left: 4px;
+  color: #667085;
+}
+
+/* FORM */
+
+.service-form {
+  background: white;
+  border: 1px solid #e5e9ef;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(16, 24, 40, 0.05);
+  overflow: hidden;
+}
+
+.service-form-section {
+  padding: 30px;
+}
+
+.service-form-section h2 {
+  margin: 0 0 6px;
+  font-size: 21px;
+}
+
+.service-form-section > p {
+  margin: 0 0 25px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.service-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.service-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-field.full {
+  margin-top: 22px;
+}
+
+.service-field label {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.service-field input,
+.service-field textarea {
+  width: 100%;
+  border: 1px solid #d0d5dd;
+  border-radius: 11px;
+  padding: 12px 14px;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.service-field input {
+  height: 48px;
+}
+
+.service-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.service-field input:focus,
+.service-field textarea:focus {
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.service-field small {
+  margin-top: 6px;
+  color: #98a2b3;
+  font-size: 11px;
+}
+
+.service-mileage {
+  position: relative;
+}
+
+.service-mileage input {
+  padding-right: 50px;
+}
+
+.service-mileage span {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #667085;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* FOOTER */
+
+.service-footer {
+  padding: 18px 30px;
+  border-top: 1px solid #eef1f5;
+  background: #fafbfc;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.service-cancel,
+.service-save {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.service-cancel {
+  background: white;
+  border: 1px solid #d0d5dd;
+  color: #344054;
+}
+
+.service-save {
+  background: #2563eb;
+  border: none;
+  color: white;
+  box-shadow:
+    0 7px 15px rgba(37, 99, 235, 0.18);
+}
+
+.service-save:hover {
+  background: #1d4ed8;
+}
+
+.service-cancel:disabled,
+.service-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ALERT */
+
+.service-alert {
+  padding: 13px 16px;
+  border-radius: 11px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.service-alert.error {
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  color: #b42318;
+}
+
+.service-alert.success {
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+  color: #067647;
+}
+
+/* LOADING */
+
+.service-loading {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #667085;
+}
+
+.service-spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid #e4e7ec;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: serviceSpin 0.8s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes serviceSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .service-page {
+    padding: 25px 15px 45px;
+  }
+
+  .vehicle-banner {
+    grid-template-columns: auto 1fr;
+  }
+
+  .current-mileage {
+    grid-column: 1 / -1;
+    text-align: left;
+    width: 100%;
+  }
+
+  .service-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-form-section {
+    padding: 24px 20px;
+  }
+
+  .service-footer {
+    padding: 18px 20px;
+    flex-direction: column-reverse;
+  }
+
+  .service-cancel,
+  .service-save {
+    width: 100%;
+  }
+}
